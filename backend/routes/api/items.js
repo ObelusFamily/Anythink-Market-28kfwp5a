@@ -73,6 +73,7 @@ router.get("/", auth.optional, function(req, res, next) {
 
       return Promise.all([
         Item.find(query)
+          .filter(query.title)
           .limit(Number(limit))
           .skip(Number(offset))
           .sort({ createdAt: "desc" })
